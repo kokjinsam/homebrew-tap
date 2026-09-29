@@ -1,25 +1,25 @@
 class Oafmt < Formula
   desc "Command-line interface for deterministic, syntax-preserving OpenAPI formatting"
   homepage "https://github.com/kokjinsam/oafmt"
-  version "0.1.0"
+  version "0.2.0"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/kokjinsam/oafmt/releases/download/v0.1.0/oafmt-aarch64-apple-darwin.tar.xz"
-      sha256 "3176c1da6901ef074b30d1e08fe4f4dc323113e50afb9da7625c8651e3a490f1"
+      url "https://github.com/kokjinsam/oafmt/releases/download/v0.2.0/oafmt-aarch64-apple-darwin.tar.xz"
+      sha256 "624a780602cf6de8941a9f1981522dd9fe556ab75d937ee40cf0c4f7b61e2cfa"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/kokjinsam/oafmt/releases/download/v0.1.0/oafmt-x86_64-apple-darwin.tar.xz"
-      sha256 "1ae3dad178afc3e31b360c2777ab12b639e961b5085f06f7f7e08e9eb9c064ea"
+      url "https://github.com/kokjinsam/oafmt/releases/download/v0.2.0/oafmt-x86_64-apple-darwin.tar.xz"
+      sha256 "da369481f31af21e7db2e03946ac79258eba8e6db0f98f3f6a5e38f589a6c684"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/kokjinsam/oafmt/releases/download/v0.1.0/oafmt-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "13575a2693ecd5f1513c6e75f15d6fe9b3213cc7f6b8d197ab1ae3ec55019831"
+      url "https://github.com/kokjinsam/oafmt/releases/download/v0.2.0/oafmt-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "f3b01d11d6c4c59b21c0e60830db09b9a832337c850ff5805eebaa358b5e06e7"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/kokjinsam/oafmt/releases/download/v0.1.0/oafmt-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "72e68b36c5bd5e1b595e472e092fa02cf288f6ce9305b9b5cbe6f9436b3fb6a2"
+      url "https://github.com/kokjinsam/oafmt/releases/download/v0.2.0/oafmt-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "13cf4ef3ad7aee95ef933dd6b8db088869e2cf920d06a18840d614cfcaf998c4"
     end
   end
   license "MIT"
@@ -47,10 +47,18 @@ class Oafmt < Formula
   end
 
   def install
-    bin.install "oafmt" if OS.mac? && Hardware::CPU.arm?
-    bin.install "oafmt" if OS.mac? && Hardware::CPU.intel?
-    bin.install "oafmt" if OS.linux? && Hardware::CPU.arm?
-    bin.install "oafmt" if OS.linux? && Hardware::CPU.intel?
+    if OS.mac? && Hardware::CPU.arm?
+      bin.install "oafmt"
+    end
+    if OS.mac? && Hardware::CPU.intel?
+      bin.install "oafmt"
+    end
+    if OS.linux? && Hardware::CPU.arm?
+      bin.install "oafmt"
+    end
+    if OS.linux? && Hardware::CPU.intel?
+      bin.install "oafmt"
+    end
 
     install_binary_aliases!
 
